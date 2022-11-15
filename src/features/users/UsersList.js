@@ -10,6 +10,8 @@ const UsersList = () => {
         error
     } = useGetUsersQuery()
 
+    console.log()
+
     let content;
     if (isLoading) {
         content = <p>"Loading..."</p>;
@@ -18,11 +20,11 @@ const UsersList = () => {
             <section className="users">
                 <h1>Users List</h1>
                 <ul>
-                    {users.map((user, i) => {
-                        return <li key={i}>{user.username}</li>
-                    })}
+                    {users.data.map((user, i) => (
+                         <li key={i}>{user.userName}</li>
+                    ))}
                 </ul>
-                <Link to="/welcome">Back to Welcome</Link>
+                <Link to="/welcome">Back to Home</Link>
             </section>
         )
     } else if (isError) {

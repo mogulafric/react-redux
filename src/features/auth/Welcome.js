@@ -1,19 +1,27 @@
 import { useSelector } from "react-redux"
-import { selectCurrentUser, selectCurrentToken } from "./authSlice"
+import { selectCurrentUser } from "./authSlice"
 import { Link } from "react-router-dom"
 
 const Welcome = () => {
     const user = useSelector(selectCurrentUser)
-    const token = useSelector(selectCurrentToken)
+    //
 
-    const welcome = user ? `Welcome ${user}!` : 'Welcome!'
-    const tokenAbbr = `${token.slice(0, 9)}...`
+    const welcome = user ? `Signed as ${user}.` : 'Welcome!'
+    //const tokenAbbr = `${token.slice(0, 12)}...`
 
     const content = (
         <section className="welcome">
             <h1>{welcome}</h1>
-            <p>Token: {tokenAbbr}</p>
             <p><Link to="/userslist">Go to the Users List</Link></p>
+            <p><Link to="/updateprofile">Update your profile</Link></p>
+            <br></br><br></br>
+            <p><Link to="/noaccess">Go to the Exams module</Link></p>
+            <p><Link to="/noaccess">Go to the Students module</Link></p>
+            <p><Link to="/noaccess">Go to Parents module</Link></p>
+            <p><Link to="/noaccess">Go to Teachers module</Link></p>
+            <br></br>
+            <p><Link to="/noaccess">Administrator</Link></p>
+
         </section>
     )
 
